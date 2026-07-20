@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub Portal - Dashboard</title>
+</head>
+<body>
+    <header>
+        <div class="logo">StudentHub Portal</div>
+        <div class="user-info">
+            <span id="userName">Welcome, Student</span>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#courses">My Courses</a></li>
+                <li><a href="#grades">Grades</a></li>
+                <li><a href="#assignments">Assignments</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <h1>Dashboard</h1>
+            
+            <div class="grid">
+                <div class="stat-box">
+                    <h3>Courses</h3>
+                    <p>5</p>
+                </div>
+                <div class="stat-box">
+                    <h3>GPA</h3>
+                    <p>3.8</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Assignments</h3>
+                    <p>3</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>Recent Courses</h2>
+                <p>No recent courses to display.</p>
+            </div>
+            
+            <div class="card">
+                <h2>Upcoming Assignments</h2>
+                <p>No upcoming assignments.</p>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        function logout() {
+            alert('Logging out...');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
