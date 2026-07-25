@@ -108,3 +108,22 @@ button{
     cursor:pointer;
     font-size: 100%;
 }
+.about-blocks{
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.about-headings{
+    color: #c76060;
+    font-size: 24px;
+    margin-bottom: 10px;
+    justify-self: center ;
+}
+.about-content{
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.6;
+    text-align: center;
+}
