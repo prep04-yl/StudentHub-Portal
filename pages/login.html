@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to the StudentHub Portal">
+    <title>Login</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<header>
-<h1>StudentHub</h1>
-<h3><a href="Home.html">Home</a> | <a href="about.html">About</a> | <a href="events.html">Events</a> | <a href="faq.html">FAQ</a> | <a href="contact.html">Contact</a> | <a href="registration.html">Register</a> | <a href="login.html">Login</a></h3>
-</header>
-<section>
-    <h4>StudentHub Portal Login</h4>
-    <input type="text" placeholder="Enter student ID"><br>
-    <input type="password" placeholder="Enter password"><br><br>
-    <a href="forgot-password.html">Forgot password?</a><br><br>
-    <button type="submit">Login</button>
-</section>
+    <header>
+        <section class="top-header">
+            <div class="logo">
+                <img src="https://images.squarespace-cdn.com/content/v1/68e4383b9e6e4820b34c6198/3bce020b-6f0b-4337-b320-0bf283e0abce/StudentHub+Logo.jpg?format=1500w" alt="student_hub_logo">
+            </div>
+            <div class="title">
+                <h1>StudentHub</h1>
+            </div>
+        </section>
+        <section class="bottom-header">
+            <nav>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="registration.html">Register</a></li>
+                    <li><a class="active" href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
 
+    <main class="login-main">
+        <section class="login-container">
+            <h2>StudentHub Portal Login</h2>
+            <form>
+                <div><input type="text" placeholder="Enter student ID" required></div>
+                <div><input type="password" placeholder="Enter password" required></div>
+                <p><a href="forgot-password.html">Forgot password?</a></p>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 StudentHub Portal</p>
+    </footer>
 
 </body>
 </html>
