@@ -87,7 +87,7 @@ h2{
     margin-bottom: 20px;
     font-size: 28px;
 }
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], input[type="email"]{
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -101,6 +101,7 @@ footer{
     padding: 20px;
 }
 button{
+    background-color: #c76060;
     width:100%;
     padding:15px;
     border: none;
@@ -126,4 +127,70 @@ button{
     color: #333333;
     line-height: 1.6;
     text-align: center;
+}
+.registration-container{
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width:100%;
+    max-width: 400px;
+}  
+.registration-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+} 
+.registration_buttons{
+    display: flex;
+    gap: 10px;
+}
+h3{
+    color: #4b4b4b;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.contact-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.contact-container{
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width:100%;
+    max-width: 400px;
+}
+.contact-divs{
+    display: flex;
+    gap: 10px;
+}
+textarea{
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+.faq-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.faq-container{
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width:100%;
+    max-width: 400px;
 }
