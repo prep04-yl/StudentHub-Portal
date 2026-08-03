@@ -3,64 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub Portal - Dashboard</title>
+    <meta name="description" content="Dashboard of the StudentHub portal">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">StudentHub Portal</div>
-        <div class="user-info">
-            <span id="userName">Welcome, Student</span>
-            <button onclick="logout()">Logout</button>
+    <header class="profile-header">
+        <div class="user-logo">
+            <img src="logo.png" alt="StudentHub Logo">
+        </div>
+        <div class="search-info">
+            <input type="search" placeholder="Search...">
+        </div>
+        <div class="user-menu">
+            <span class="notification">🔔</span>
+            <div class="user-details">
+                <p>Prey Patel</p>
+                <small>2XDCEXXX</small>
+            </div>
+            <img src="" class="mini-profile" alt="Profile">
+            <span>▼</span>
         </div>
     </header>
-    
-    <div class="container">
+    <div class="dashboard-layout">
         <aside class="sidebar">
-            <ul>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#courses">My Courses</a></li>
-                <li><a href="#grades">Grades</a></li>
-                <li><a href="#assignments">Assignments</a></li>
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#settings">Settings</a></li>
-            </ul>
+            <a href="dashboard.html" class="active">🏠 Home</a>
+            <a href="profile.html">👤 Profile</a>
+            <a href="courses.html">📚 Courses</a>
+            <a href="events.html">📅 Events</a>
+            <a href="login.html">🚪 Logout</a>
         </aside>
-        
-        <main class="main-content">
-            <h1>Dashboard</h1>
-            
-            <div class="grid">
-                <div class="stat-box">
-                    <h3>Courses</h3>
-                    <p>5</p>
+        <main class="dashboard-main">
+            <h2>Dashboard</h2>
+            <section class="stats">
+                <div class="stat-card">
+                    <h3>Attendance</h3>
+                    <p>92%</p>
                 </div>
-                <div class="stat-box">
-                    <h3>GPA</h3>
-                    <p>3.8</p>
+                <div class="stat-card">
+                    <h3>CGPA</h3>
+                    <p>8.74</p>
                 </div>
-                <div class="stat-box">
-                    <h3>Assignments</h3>
-                    <p>3</p>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h2>Recent Courses</h2>
-                <p>No recent courses to display.</p>
-            </div>
-            
-            <div class="card">
-                <h2>Upcoming Assignments</h2>
-                <p>No upcoming assignments.</p>
-            </div>
+            </section>
+            <section class="dashboard-card">
+                <h3>Today's Timetable</h3>
+                <p>9:00 AM - Data Structures</p>
+                <p>11:00 AM - Mathematics</p>
+            </section>
+
+            <section class="dashboard-card">
+                <h3>University Results</h3>
+            <p>Semester III Result Published</p>
+            </section>
+            <section class="dashboard-card">
+                <h3>Announcements</h3>
+                <p>Hackathon registrations close this Friday.</p>
+            </section>
         </main>
     </div>
-    
-    <script>
-        function logout() {
-            alert('Logging out...');
-            window.location.href = 'login.html';
-        }
-    </script>
 </body>
 </html>
