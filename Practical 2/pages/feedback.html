@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Feedback for the studenthub portal">
-    <title>Feedback</title>
-    <link rel="stylesheet" href="/Practical 3/style.css">
+    <title>Feedback - StudentHub Portal</title>
+    <link rel="stylesheet" href="../../Practical 3/style.css">
 </head>
 <body>
     <header>
         <section class="top-header">
             <div class="logo">
-                <img src="https://images.squarespace-cdn.com/content/v1/68e4383b9e6e4820b34c6198/3bce020b-6f0b-4337-b320-0bf283e0abce/StudentHub+Logo.jpg?format=1500w" alt="student_hub_logo">
+                <img src="../Student+Hub.jpg" alt="StudentHub Logo">
             </div>
             <div class="title">
                 <h1>StudentHub</h1>
             </div>
+            <div class="header-controls">
+                <button id="themeSwitcher" class="theme-switcher" title="Toggle dark/light mode" onclick="toggleTheme()">🌙</button>
+                <button id="hamburgerBtn" class="hamburger" onclick="toggleHamburger()" title="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </section>
         <section class="bottom-header">
-            <nav>
+            <nav><div id="navMenu">
                 <ul>
-                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="home.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="faq.html">FAQ</a></li>
@@ -29,18 +37,31 @@
                     <li><a href="registration.html">Register</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
-            </nav>
+            </div></nav>
         </section>
     </header>
 
     <main class="feedback-main">
         <section class="feedback-container">
             <h2>Feedback Form</h2>
-            <form>
+            <form id="feedbackForm">
                 <div><label>Name: </label><input type="text" placeholder="Enter your name" required></div>
-                <div><label>Email: </label><input type="email" placeholder="Enter your email"></div>
-                <div><label>Rating: </label><input type="range" min="1" max="5" step="1"></div>
-                <div><label>Comments: </label><textarea placeholder="Enter your comments"></textarea></div>
+                <div><label>Email: </label><input type="email" placeholder="Enter your email" required></div>
+                <div><label>Rating: </label>
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" class="star">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" class="star">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" class="star">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" class="star">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" class="star">★</label>
+                </div>
+                </div>
+                <div><label>Comments: </label><textarea placeholder="Enter your comments" required></textarea></div>
                 <button type="submit">Submit Feedback</button>
             </form>
         </section>
@@ -50,5 +71,37 @@
         <p>&copy; 2026 StudentHub Portal</p>
     </footer>
 
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner">
+        <span id="notificationText">Welcome to StudentHub Portal!</span>
+        <button class="notification-close" onclick="closeNotification()">&times;</button>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Modal message content goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="closeModal()">Close</button>
+                <button type="button" onclick="confirmModal()" class="btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div id="modalOverlay" class="modal-overlay hidden" onclick="closeModal()"></div>
+
+    <!-- JavaScript for Dynamic Components -->
+    <script src="../../Practical 4/dynamic-components.js"></script>
 </body>
 </html>
+
+
+
+
+
+

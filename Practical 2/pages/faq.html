@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FAQ for the studenthub portal">
-    <title>FAQ</title>
-    <link rel="stylesheet" href="/Practical 3/style.css">
+    <title>FAQ - StudentHub Portal</title>
+    <link rel="stylesheet" href="../../Practical 3/style.css">
 </head>
 <body>
     <header>
         <section class="top-header">
             <div class="logo">
-                <img src="https://images.squarespace-cdn.com/content/v1/68e4383b9e6e4820b34c6198/3bce020b-6f0b-4337-b320-0bf283e0abce/StudentHub+Logo.jpg?format=1500w" alt="student_hub_logo">
+                <img src="../Student+Hub.jpg" alt="StudentHub Logo">
             </div>
             <div class="title">
                 <h1>StudentHub</h1>
             </div>
+            <div class="header-controls">
+                <button id="themeSwitcher" class="theme-switcher" title="Toggle dark/light mode" onclick="toggleTheme()">🌙</button>
+                <button id="hamburgerBtn" class="hamburger" onclick="toggleHamburger()" title="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </section>
         <section class="bottom-header">
-            <nav>
+            <nav><div id="navMenu">
                 <ul>
-                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="home.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a class="active" href="faq.html">FAQ</a></li>
@@ -29,27 +37,70 @@
                     <li><a href="registration.html">Register</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
-            </nav>
+            </div></nav>
         </section>
     </header>
     
     <main class="faq-main">
         <section>
             <h2>Frequently Asked Questions (FAQ)</h2>
+            <p style="text-align:center; color:#666; margin-bottom:25px;">Click on any question below to expand or collapse the answer.</p>
         </section>
         <section class="faq-container">
-            <details>
-                <summary>Q1. What is StudentHub?</summary>
-                <p>StudentHub is a web portal designed to provide students with information about events, registration, and other resources.</p>
-            </details>
-            <details>
-                <summary>Q2. How can I register for events?</summary>
-                <p>You can register for events by clicking on the "Events" link in the navigation menu and following the registration instructions.</p>
-            </details>
-            <details>
-                <summary>Q3. How do I contact support?</summary>
-                <p>You can contact support by clicking on the "Contact" link in the navigation menu and filling out the contact form.</p>
-            </details>
+            <!-- JavaScript Collapsible FAQ Items -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-title">Q1. What is StudentHub Portal?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>StudentHub is a comprehensive web portal designed to provide students with single-window access to academic news, event registration, campus announcements, and administrative resources.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-title">Q2. How can I register for events?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can browse upcoming events on the <a href="events.html" style="color:#c76060; font-weight:bold;">Events Page</a> and click "View Details" or "Register" to sign up instantly using your student ID.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-title">Q3. How do I contact student support?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can visit the <a href="contact.html" style="color:#c76060; font-weight:bold;">Contact Page</a> to submit an inquiry ticket or reach out directly to support@studenthub.edu.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-title">Q4. How do I switch between Light and Dark mode?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Click the 🌙 / ☀️ icon located at the top right of the page navigation header. Your preference will automatically be saved across your session!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span class="faq-title">Q5. What should I do if I forget my password?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>On the <a href="login.html" style="color:#c76060; font-weight:bold;">Login Page</a>, click "Forgot Password?" to trigger password reset instructions sent to your registered student email address.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px; text-align: center;">
+                <button type="button" onclick="openModal('Need More Help?', 'If your query is not listed above, please submit a feedback form or contact our help desk available 24/7.')" style="padding: 12px 20px; width: auto; display: inline-block;">Have another question?</button>
+            </div>
         </section>
     </main>
 
@@ -57,5 +108,37 @@
         <p>&copy; 2026 StudentHub Portal</p>
     </footer>
 
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner">
+        <span id="notificationText">Welcome to StudentHub Portal!</span>
+        <button class="notification-close" onclick="closeNotification()">&times;</button>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Modal message content goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="closeModal()">Close</button>
+                <button type="button" onclick="confirmModal()" class="btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div id="modalOverlay" class="modal-overlay hidden" onclick="closeModal()"></div>
+
+    <!-- JavaScript for Dynamic Components -->
+    <script src="../../Practical 4/dynamic-components.js"></script>
 </body>
 </html>
+
+
+
+
+
+

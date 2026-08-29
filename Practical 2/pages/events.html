@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Events of the studenthub portal">
-    <title>Events</title>
-    <link rel="stylesheet" href="/Practical 3/style.css">
+    <title>Events - StudentHub Portal</title>
+    <link rel="stylesheet" href="../../Practical 3/style.css">
 </head>
 <body>
     <header>
         <section class="top-header">
             <div class="logo">
-                <img src="https://images.squarespace-cdn.com/content/v1/68e4383b9e6e4820b34c6198/3bce020b-6f0b-4337-b320-0bf283e0abce/StudentHub+Logo.jpg?format=1500w" alt="student_hub_logo">
+                <img src="../Student+Hub.jpg" alt="StudentHub Logo">
             </div>
             <div class="title">
                 <h1>StudentHub</h1>
             </div>
+            <div class="header-controls">
+                <button id="themeSwitcher" class="theme-switcher" title="Toggle dark/light mode" onclick="toggleTheme()">🌙</button>
+                <button id="hamburgerBtn" class="hamburger" onclick="toggleHamburger()" title="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </section>
         <section class="bottom-header">
-            <nav>
+            <nav><div id="navMenu">
                 <ul>
-                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="home.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a class="active" href="events.html">Events</a></li>
                     <li><a href="faq.html">FAQ</a></li>
@@ -29,75 +37,75 @@
                     <li><a href="registration.html">Register</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
-            </nav>
+            </div></nav>
         </section>
     </header>
     <main class="events-main">
-        <h2>Events</h2>
+        <h2>Campus Events & Workshops</h2>
         <div class="grid-container">
             <div class="events-divs">
                 <h4>AI Workshop</h4>
                 <p class="p-button-push">Date: March 20th, 2026<br>
                 Time: 10:00 AM - 12:00 PM<br>
                 Venue: Room 101, Main Building<br>
-                Short description...</p>
-                <button>View Details</button>
+                Learn fundamentals of Artificial Intelligence & Machine Learning.</p>
+                <button type="button" onclick="openModal('AI Workshop', 'Join us for an interactive workshop covering neural networks, Python AI libraries, and practical machine learning applications. Date: March 20th, 2026 at Room 101.')">View Details</button>
             </div>
             <div class="events-divs">
                 <h4>Hackathon 2026</h4>
-                <p class="p-button-push">Date: March 15th - March 17th, 2026<br>
-                Time: 48 hours<br>
+                <p class="p-button-push">Date: March 15th - 17th, 2026<br>
+                Time: 48 hours nonstop<br>
                 Venue: Tech Lab, Building B<br>
-                Short description...</p>    
-                <button>View Details</button>
+                48-hour coding marathon with prizes for top projects.</p>    
+                <button type="button" onclick="openModal('Hackathon 2026', 'Build innovative software/hardware solutions in teams of 2 to 4. Free meals, mentor assistance, and over $5000 in prizes! Date: March 15th - 17th, 2026.')">View Details</button>
             </div>
             <div class="events-divs">
                 <h4>Placement Drive</h4>
                 <p class="p-button-push">Date: April 5th, 2026<br>
                 Time: 9:00 AM - 3:00 PM<br>
                 Venue: Auditorium, Main Building<br>
-                Short description...</p>
-                <button>View Details</button>
+                Annual recruitment drive for graduating batches.</p>
+                <button type="button" onclick="openModal('Placement Drive 2026', 'Meet recruiters from top MNCs and high-growth startups. Mandatory formal dress code and printed resumes required.')">View Details</button>
             </div>
             <div class="events-divs">
                 <h4>Poster Making</h4>
                 <p class="p-button-push">Date: April 12th, 2026<br>
                 Time: 11:00 AM - 1:00 PM<br>
                 Venue: Art Room, Building C<br>
-                Short description...</p>
-                <button>View Details</button>
+                Creative poster design competition around Sustainability.</p>
+                <button type="button" onclick="openModal('Poster Making Competition', 'Express your creativity on the theme Environment & Tech Sustainability. Materials will be provided at the venue.')">View Details</button>
             </div>
             <div class="events-divs">
                 <h4>Talent Show</h4>
                 <p class="p-button-push">Date: April 20th, 2026<br>
                 Time: 5:00 PM - 8:00 PM<br>
                 Venue: Auditorium, Main Building<br>
-                Short description...</p>
-                <button>View Details</button>
+                Showcase your singing, dancing, drama & music skills.</p>
+                <button type="button" onclick="openModal('Annual Student Talent Show', 'Auditions close April 10th. Open for individual and group performances. Winners earn trophies and certificates.')">View Details</button>
             </div>
             <div class="events-divs">
                 <h4>Coding Contest</h4>
                 <p class="p-button-push">Date: April 25th, 2026<br>
                 Time: 2:00 PM - 5:00 PM<br>
                 Venue: Computer Lab, Building D<br>
-                Short description...</p>
-                <button>View Details</button>
+                Speed algorithmic problem solving challenge.</p>
+                <button type="button" onclick="openModal('Speed Coding Contest', 'Solve 5 algorithmic challenges in C++, Java, or Python. Test cases evaluated automatically on competitive coding platform.')">View Details</button>
             </div>
             <div class="events-divs">
                 <h4>AI Summit</h4>
                 <p class="p-button-push">Date: May 10th, 2026<br>
                 Time: 9:00 AM - 5:00 PM<br>
                 Venue: Convention Center, Main Building<br>
-                Short description...</p>
-                <button>View Details</button>
+                Keynotes from leading researchers and tech leaders.</p>
+                <button type="button" onclick="openModal('National AI Summit', 'Full-day conference with keynote sessions, paper presentations, panel discussions on Generative AI and Ethics.')">View Details</button>
             </div>
             <div class="events-divs">
                 <h4>Startup Expo</h4>
                 <p class="p-button-push">Date: May 15th, 2026<br>
                 Time: 10:00 AM - 4:00 PM<br>
                 Venue: Exhibition Hall, Building E<br>
-                Short description...</p>
-                <button>View Details</button>
+                Student startup pitches and investor networking.</p>
+                <button type="button" onclick="openModal('Student Startup Expo', 'Pitch your startup ideas to angel investors and seed funds. Winner receives $2000 seed grant funding.')">View Details</button>
             </div>
         </div>
     </main>
@@ -106,6 +114,37 @@
         <p>&copy; 2026 StudentHub Portal</p>
     </footer>
 
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner">
+        <span id="notificationText">Welcome to StudentHub Portal!</span>
+        <button class="notification-close" onclick="closeNotification()">&times;</button>
+    </div>
 
+    <!-- Modal Popup -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Modal message content goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="closeModal()">Close</button>
+                <button type="button" onclick="confirmModal()" class="btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div id="modalOverlay" class="modal-overlay hidden" onclick="closeModal()"></div>
+
+    <!-- JavaScript for Dynamic Components -->
+    <script src="../../Practical 4/dynamic-components.js"></script>
 </body>
 </html>
+
+
+
+
+
+

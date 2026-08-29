@@ -1,93 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Profile page of the studenthub portal">
-    <title>Profile</title>
-    <link rel="stylesheet" href="/Practical 3/style.css">
+    <title>Profile - StudentHub Portal</title>
+    <link rel="stylesheet" href="../../Practical 3/style.css">
 </head>
 <body>
     <header class="profile-header">
         <div class="user-logo">
-            <img src="https://images.squarespace-cdn.com/content/v1/68e4383b9e6e4820b34c6198/3bce020b-6f0b-4337-b320-0bf283e0abce/StudentHub+Logo.jpg?format=1500w" alt="StudentHub Logo">
+            <img src="../Student+Hub.jpg" alt="StudentHub Logo">
         </div>
         <div class="search-info">
-            <input type="search" placeholder="Search...">
+            <input type="search" placeholder="Search profile...">
         </div>
         <div class="user-menu">
-            <span class="notification">🔔</span>
+            <button id="themeSwitcher" class="theme-switcher" title="Toggle dark/light mode" onclick="toggleTheme()">🌙</button>
+            <span class="notification" onclick="showNotification('info', 'Your profile details were last verified on August 2026.')" style="cursor:pointer;" title="Notifications">🔔</span>
             <div class="user-details">
                 <p>Prey Patel</p>
                 <small>2XDCEXXX</small>
             </div>
-            <img src="" class="mini-profile" alt="Profile">
-            <span class="dropdown">▼</span>
+            <img src="../blank-profile-picture.png" class="mini-profile" alt="Profile">
         </div>
     </header>
     <main class="profile-main">
         <h2>Student Profile</h2>
         <section class="profile-picture-section">
             <div class="profile-picture">
-                <img src="" alt="Profile Picture" class="profile-img">
-                <button class="change-pic">Change Picture</button>
+                <img src="../blank-profile-picture.png" alt="Profile Picture" class="profile-img">
+                <button class="change-pic" onclick="openModal('Change Profile Picture', 'Select a PNG or JPG file from your local computer (Max size 5MB).')">Change Picture</button>
             </div>
         </section>
         <section class="profile-details">
-            <form>
+            <form id="profileForm">
                 <div class="profile-details-element">
                     <label>Name:</label>
-                    <input type="text" value="Prey Patel">
+                    <input type="text" value="Prey Patel" required>
                 </div>
                 <div class="profile-details-element">
                     <label>Email:</label>
-                    <input type="email" value="preypatel@example.com">
+                    <input type="email" value="preypatel@example.com" required>
                 </div>
                 <div class="profile-details-element">
                     <label>Student ID:</label>
-                    <input type="text" value="2XDCEXXX">
+                    <input type="text" value="2XDCEXXX" readonly style="background:#e9ecef;">
                 </div>
                 <div class="profile-details-element">
-                    <label>Department</label>
-                    <input type="text" value="Computer Engineering">
+                    <label>Department:</label>
+                    <input type="text" value="Computer Engineering" required>
                 </div>
                 <div class="profile-details-element">
-                    <label>Semester</label> 
-                    <input type="number" value="3">
+                    <label>Semester:</label> 
+                    <input type="number" value="3" required>
                 </div>
                 <div class="profile-buttons">
-                    <button type="button">Edit</button>
-                    <button type="submit">Save</button>
+                    <button type="button" onclick="window.location.href='dashboard.html'">Back</button>
+                    <button type="submit">Save Changes</button>
                 </div>
             </form>
         </section>
     </main>
     <footer>
-        <p>&copy; 2026 StudentHub. All rights reserved.</p>
+        <p>&copy; 2026 StudentHub Portal. All rights reserved.</p>
     </footer>
 
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner">
+        <span id="notificationText">Welcome to StudentHub Portal!</span>
+        <button class="notification-close" onclick="closeNotification()">&times;</button>
+    </div>
 
+    <!-- Modal Popup -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Modal message content goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="closeModal()">Close</button>
+                <button type="button" onclick="confirmModal()" class="btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div id="modalOverlay" class="modal-overlay hidden" onclick="closeModal()"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <section>
-        <h3>Profile Details</h3>
-        <p>Name: <input type="text" value="john"></p>
-        <p>Email: <input type="email" value="feggsg@gmail.com"></p>
-        <p>Student ID: <input type="text" value="12345"></p>
-        <p>Department: <input type="text" value="Computer Science"></p>
-        <p>Semester: <input type="number" min="1" max="8" value="3"></p>
-        <button type="submit">Edit</button>
-        <button type="submit">Save</button>
-    </section> -->
+    <!-- JavaScript for Dynamic Components -->
+    <script src="../../Practical 4/dynamic-components.js"></script>
 </body>
 </html>
+
+
+
+
+
+

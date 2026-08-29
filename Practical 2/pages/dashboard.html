@@ -4,37 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dashboard of the StudentHub portal">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/Practical 3/style.css">
+    <title>Dashboard - StudentHub Portal</title>
+    <link rel="stylesheet" href="../../Practical 3/style.css">
 </head>
 <body>
     <header class="profile-header">
         <div class="user-logo">
-            <img src="logo.png" alt="StudentHub Logo">
+            <img src="../Student+Hub.jpg" alt="StudentHub Logo">
         </div>
         <div class="search-info">
-            <input type="search" placeholder="Search...">
+            <input type="search" placeholder="Search dashboard...">
         </div>
         <div class="user-menu">
-            <span class="notification">🔔</span>
+            <button id="themeSwitcher" class="theme-switcher" title="Toggle dark/light mode" onclick="toggleTheme()">🌙</button>
+            <span class="notification" onclick="showNotification('info', 'You have 3 new unread announcements.')" style="cursor:pointer;" title="Notifications">🔔</span>
             <div class="user-details">
                 <p>Prey Patel</p>
                 <small>2XDCEXXX</small>
             </div>
-            <img src="" class="mini-profile" alt="Profile">
-            <span>▼</span>
+            <img src="../blank-profile-picture.png" class="mini-profile" alt="Profile">
         </div>
     </header>
     <div class="dashboard-layout">
         <aside class="sidebar">
-            <a href="dashboard.html" class="active">🏠 Home</a>
+            <a href="home.html">🏠 Home</a>
+            <a href="dashboard.html" class="active">📊 Dashboard</a>
             <a href="profile.html">👤 Profile</a>
-            <a href="courses.html">📚 Courses</a>
             <a href="events.html">📅 Events</a>
+            <a href="faq.html">❓ FAQ</a>
             <a href="login.html">🚪 Logout</a>
         </aside>
         <main class="dashboard-main">
-            <h2>Dashboard</h2>
+            <h2>Student Dashboard</h2>
             <section class="stats">
                 <div class="stat-card">
                     <h3>Attendance</h3>
@@ -47,19 +48,56 @@
             </section>
             <section class="dashboard-card">
                 <h3>Today's Timetable</h3>
-                <p>9:00 AM - Data Structures</p>
-                <p>11:00 AM - Mathematics</p>
+                <p><strong>09:00 AM:</strong> Data Structures & Algorithms (Lab 3)</p>
+                <p><strong>11:00 AM:</strong> Web Development Frameworks (Room 204)</p>
             </section>
 
             <section class="dashboard-card">
                 <h3>University Results</h3>
-            <p>Semester III Result Published</p>
+                <p>Semester III Result Published — <strong>Passed with Distinction</strong></p>
+                <button type="button" class="btn-card" onclick="openModal('Semester III Marksheet', 'Your official grade card for Semester III is ready for download. Cumulative GPA: 8.74.')" style="margin-top:10px; padding:10px 15px; width:auto;">View Marksheet</button>
             </section>
             <section class="dashboard-card">
                 <h3>Announcements</h3>
-                <p>Hackathon registrations close this Friday.</p>
+                <p>Hackathon 2026 registrations close this Friday. Make sure your team is registered!</p>
             </section>
         </main>
     </div>
+    <footer>
+        <p>&copy; 2026 StudentHub Portal</p>
+    </footer>
+
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner">
+        <span id="notificationText">Welcome to StudentHub Portal!</span>
+        <button class="notification-close" onclick="closeNotification()">&times;</button>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Modal message content goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="closeModal()">Close</button>
+                <button type="button" onclick="confirmModal()" class="btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div id="modalOverlay" class="modal-overlay hidden" onclick="closeModal()"></div>
+
+    <!-- JavaScript for Dynamic Components -->
+    <script src="../../Practical 4/dynamic-components.js"></script>
 </body>
 </html>
+
+
+
+
+
+

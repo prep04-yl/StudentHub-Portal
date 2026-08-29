@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Home of the studenthub portal">
-    <title>Home</title>
-    <link rel="stylesheet" href="/Practical 3/style.css">
+    <title>Home - StudentHub Portal</title>
+    <link rel="stylesheet" href="../../Practical 3/style.css">
 </head>
 <body>
-<header>
+    <header>
         <section class="top-header">
             <div class="logo">
-                <img src="https://images.squarespace-cdn.com/content/v1/68e4383b9e6e4820b34c6198/3bce020b-6f0b-4337-b320-0bf283e0abce/StudentHub+Logo.jpg?format=1500w" alt="StudentHub Logo">
+                <img src="../Student+Hub.jpg" alt="StudentHub Logo">
             </div>
             <div class="title">
                 <h1>StudentHub</h1>
             </div>
+            <div class="header-controls">
+                <button id="themeSwitcher" class="theme-switcher" title="Toggle dark/light mode" onclick="toggleTheme()">🌙</button>
+                <button id="hamburgerBtn" class="hamburger" onclick="toggleHamburger()" title="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </section>
         <section class="bottom-header">
-            <nav>
+            <nav><div id="navMenu">
                 <ul>
-                    <li><a class="active" href="Home.html">Home</a></li>
+                    <li><a class="active" href="home.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="faq.html">FAQ</a></li>
@@ -29,15 +37,60 @@
                     <li><a href="registration.html">Register</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
-            </nav>
+            </div></nav>
         </section>
     </header>
 
     <main class="home-main">
+        <!-- Hero Section & Dynamic Image/Content Slider -->
         <section class="welcome">
             <h2>Welcome to StudentHub Portal</h2>
             <p>Stay connected with campus news, upcoming events, important announcements, and student services—all in one place.</p>
         </section>
+
+        <section class="slider-section">
+            <div class="slider-container" id="mainSlider">
+                <div class="slide active">
+                    <div class="slide-content" style="background: linear-gradient(135deg, #c76060, #802323);">
+                        <div class="slide-text">
+                            <h3>🚀 TechFest 2026 Registration Open!</h3>
+                            <p>Compete in coding marathons, robotics challenges, and web dev hackathons with major prizes.</p>
+                            <button type="button" class="btn-slide" onclick="openModal('TechFest 2026', 'Registration is now open for TechFest 2026! Join over 500+ participants competing across 10 technical categories. Early bird registration closes March 10th.')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content" style="background: linear-gradient(135deg, #2e7d32, #1b5e20);">
+                        <div class="slide-text">
+                            <h3>🎓 Annual Campus Placement Drive</h3>
+                            <p>Over 40 top tech companies and recruiters visiting campus next month for internships & FTE roles.</p>
+                            <button type="button" class="btn-slide" onclick="openModal('Campus Placement Drive', 'Prepare your resumes! The placement cell will hold resume review sessions every Tuesday and Thursday at Building A.')">View Schedule</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content" style="background: linear-gradient(135deg, #1565c0, #0d47a1);">
+                        <div class="slide-text">
+                            <h3>📚 Semester Examination Schedule</h3>
+                            <p>Final examination timetables for Semesters III & V have been published on the student portal.</p>
+                            <button type="button" class="btn-slide" onclick="openModal('Exam Schedule', 'Exams commence on April 15th, 2026. Hall tickets will be downloadable starting April 1st from your Student Dashboard.')">Download Timetable</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <button class="slider-btn prev-btn" onclick="changeSlide(-1)" aria-label="Previous Slide">&#10094;</button>
+                <button class="slider-btn next-btn" onclick="changeSlide(1)" aria-label="Next Slide">&#10095;</button>
+
+                <!-- Indicator Dots -->
+                <div class="indicators-container">
+                    <span class="indicator active" onclick="currentSlide(0)"></span>
+                    <span class="indicator" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                </div>
+            </div>
+        </section>
+
         <section class="home-grid">
             <div class="home-card">
                 <h3>Latest News</h3>
@@ -63,19 +116,20 @@
             </div>
             <div class="home-card">
                 <h3>Quick Links</h3>
-                    <ul class="quick-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="registration.html">Register</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>      
+                <ul class="quick-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="registration.html">Register</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>      
             </div>
             <div class="home-card">
                 <h3>Announcements</h3>
                 <div class="news-events">
-                    <p>New Course Offerings for the Upcoming Semester</p>
+                    <p>New Course Offerings for the Upcoming Semester.</p>
+                    <button type="button" class="btn-card" onclick="showNotification('info', 'New courses in AI, Blockchain, and Cloud Computing are open for enrollment!')">Check Course Info</button>
                 </div>
             </div>
         </section>
@@ -85,5 +139,37 @@
         <p>&copy; 2026 StudentHub Portal</p>
     </footer>
 
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner">
+        <span id="notificationText">Welcome to StudentHub Portal!</span>
+        <button class="notification-close" onclick="closeNotification()">&times;</button>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage">Modal message content goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="closeModal()">Close</button>
+                <button type="button" onclick="confirmModal()" class="btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div id="modalOverlay" class="modal-overlay hidden" onclick="closeModal()"></div>
+
+    <!-- JavaScript for Dynamic Components -->
+    <script src="../../Practical 4/dynamic-components.js"></script>
 </body>
 </html>
+
+
+
+
+
+
