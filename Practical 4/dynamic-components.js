@@ -29,12 +29,185 @@ function initializeFormListeners() {
         });
     }
 
-    // Register Form
+    // Register Form with Regex Validation
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
+        // Regex rules
+        const regexRules = {
+            fullName: /^[A-Za-z\s]{3,50}$/, // Only alphabets and spaces, 3 to 50 chars
+            email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Standard email format
+            mobile: /^[6-9]\d{9}$/, // 10 digit Indian mobile number starting with 6,7,8,9
+            password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/ // Min 8 chars, 1 uppercase, 1 lowercase, 1 digit
+        };
+
+        const validateField = function(id, rule, errorMsg) {
+            const field = document.getElementById(id);
+            const errorElem = document.getElementById(id + 'Error');
+            if (!field || !errorElem) return true;
+
+            const val = field.value.trim();
+            let isValid = true;
+
+            if (!val) {
+                errorElem.textContent = 'This field is required.';
+                field.classList.add('invalid');
+                isValid = false;
+            } else if (rule && !rule.test(val)) {
+                errorElem.textContent = errorMsg;
+                field.classList.add('invalid');
+                isValid = false;
+            } else {
+                errorElem.textContent = '';
+                field.classList.remove('invalid');
+            }
+            return isValid;
+        };
+
+        const validateConfirmPassword = function() {
+            const pwd = document.getElementById('password');
+            const confirmPwd = document.getElementById('confirmPassword');
+            const errorElem = document.getElementById('confirmPasswordError');
+            if (!pwd || !confirmPwd || !errorElem) return true;
+
+            const pwdVal = pwd.value;
+            const confirmVal = confirmPwd.value;
+
+            if (!confirmVal) {
+                errorElem.textContent = 'Please confirm your password.';
+                confirmPwd.classList.add('invalid');
+                return false;
+            } else if (pwdVal !== confirmVal) {
+                errorElem.textContent = 'Passwords do not match.';
+                confirmPwd.classList.add('invalid');
+                return false;
+            } else {
+                errorElem.textContent = '';
+                confirmPwd.classList.remove('invalid');
+                return true;
+            }
+        };
+
+        const validateSelect = function(id, errorMsg) {
+            const field = document.getElementById(id);
+            const errorElem = document.getElementById(id + 'Error');
+            if (!field || !errorElem) return true;
+
+            if (!field.value) {
+                errorElem.textContent = errorMsg;
+                field.classList.add('invalid');
+                return false;
+            } else {
+                errorElem.textContent = '';
+                field.classList.remove('invalid');
+                return true;
+            }
+        };
+
+        const validateGender = function() {
+            const genderRadios = document.querySelectorAll('input[name="gender"]');
+            const errorElem = document.getElementById('genderError');
+            let selected = false;
+            genderRadios.forEach(r => { if (r.checked) selected = true; });
+
+            if (!selected) {
+                if (errorElem) errorElem.textContent = 'Please select your gender.';
+                return false;
+            } else {
+                if (errorElem) errorElem.textContent = '';
+                return true;
+            }
+        };
+
+        const validateTerms = function() {
+            const terms = document.getElementById('terms');
+            const errorElem = document.getElementById('termsError');
+            if (!terms || !errorElem) return true;
+
+            if (!terms.checked) {
+                errorElem.textContent = 'You must accept the terms and conditions.';
+                return false;
+            } else {
+                errorElem.textContent = '';
+                return true;
+            }
+        };
+
+        // Real-time error clearing on input change
+        const inputsToListen = ['fullName', 'email', 'mobile', 'password'];
+        inputsToListen.forEach(id => {
+            const elem = document.getElementById(id);
+            if (elem) {
+                elem.addEventListener('input', function() {
+                    elem.classList.remove('invalid');
+                    const err = document.getElementById(id + 'Error');
+                    if (err) err.textContent = '';
+                });
+            }
+        });
+
+        const confirmPwdElem = document.getElementById('confirmPassword');
+        if (confirmPwdElem) {
+            confirmPwdElem.addEventListener('input', function() {
+                confirmPwdElem.classList.remove('invalid');
+                const err = document.getElementById('confirmPasswordError');
+                if (err) err.textContent = '';
+            });
+        }
+
+        ['course', 'year'].forEach(id => {
+            const elem = document.getElementById(id);
+            if (elem) {
+                elem.addEventListener('change', function() {
+                    elem.classList.remove('invalid');
+                    const err = document.getElementById(id + 'Error');
+                    if (err) err.textContent = '';
+                });
+            }
+        });
+
+        document.querySelectorAll('input[name="gender"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const err = document.getElementById('genderError');
+                if (err) err.textContent = '';
+            });
+        });
+
+        const termsElem = document.getElementById('terms');
+        if (termsElem) {
+            termsElem.addEventListener('change', function() {
+                const err = document.getElementById('termsError');
+                if (err) err.textContent = '';
+            });
+        }
+
+        // Form Submit Handler
         registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            showNotification('success', 'Registration submitted successfully! Please check your email for confirmation.');
+
+            const isNameValid = validateField('fullName', regexRules.fullName, 'Name must contain only letters (min 3 characters).');
+            const isEmailValid = validateField('email', regexRules.email, 'Please enter a valid email address.');
+            const isMobileValid = validateField('mobile', regexRules.mobile, 'Mobile number must be a valid 10-digit number starting with 6-9.');
+            const isPasswordValid = validateField('password', regexRules.password, 'Password must be at least 8 chars with 1 uppercase, 1 lowercase & 1 digit.');
+            const isConfirmPwdValid = validateConfirmPassword();
+            const isCourseValid = validateSelect('course', 'Please select a course.');
+            const isYearValid = validateSelect('year', 'Please select year of study.');
+            const isGenderValid = validateGender();
+            const isTermsValid = validateTerms();
+
+            if (isNameValid && isEmailValid && isMobileValid && isPasswordValid && isConfirmPwdValid && isCourseValid && isYearValid && isGenderValid && isTermsValid) {
+                showNotification('success', 'Registration submitted successfully! Please check your email for confirmation.');
+                registerForm.reset();
+                document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+                document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+            } else {
+                showNotification('error', 'Please correct the errors in the form before submitting.');
+            }
+        });
+
+        // Form Reset Handler
+        registerForm.addEventListener('reset', function() {
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+            document.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
         });
     }
 

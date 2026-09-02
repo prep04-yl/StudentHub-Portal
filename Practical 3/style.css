@@ -428,20 +428,132 @@ footer {
 
 .registration-container {
     background-color: #ffffff;
-    padding: 40px;
+    padding: 30px 40px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 440px;
+}
+
+.registration-container form {
+    gap: 8px;
+}
+
+.registration-container .form-group {
+    margin-bottom: 2px;
+}
+
+.registration-container .form-group label {
+    margin-bottom: 3px;
+    font-size: 13px;
+}
+
+.registration-container input[type="text"],
+.registration-container input[type="password"],
+.registration-container input[type="email"],
+.registration-container input[type="tel"],
+.registration-container select {
+    padding: 8px 10px;
+    margin-bottom: 2px;
+}
+
+.registration-container .gender-options {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.registration-container .error-message {
+    min-height: 14px;
+    font-size: 11px;
+    margin-top: 1px;
 }
 
 .registration_buttons {
     display: flex;
     gap: 10px;
+    margin-top: 8px;
 }
 
 .registration_buttons button {
     flex: 1;
+    padding: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #333333;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #c76060;
+    box-shadow: 0 0 5px rgba(199, 96, 96, 0.3);
+}
+
+.gender-options {
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.gender-options label {
+    font-weight: normal;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.checkbox-label {
+    font-weight: normal !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 12px;
+    min-height: 16px;
+    margin-top: 2px;
+    display: block;
+    font-weight: 500;
+}
+
+input.invalid, select.invalid {
+    border-color: #d9534f !important;
+    background-color: #fff8f8;
+}
+
+.dark-theme select {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border-color: #444444;
+}
+
+.dark-theme input.invalid, .dark-theme select.invalid {
+    background-color: #3a2222;
+    border-color: #ff6b6b !important;
+}
+
+.dark-theme .error-message {
+    color: #ff6b6b;
 }
 
 /* ===== ABOUT PAGE ===== */
