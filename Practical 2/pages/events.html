@@ -42,6 +42,34 @@
     </header>
     <main class="events-main">
         <h2>Campus Events & Workshops</h2>
+
+        <!-- Event Controls: Search, Filter, Sort -->
+        <section class="events-controls">
+            <div class="control-item search-box">
+                <input type="search" id="eventSearch" placeholder="🔍 Search by event, venue, or keyword..." aria-label="Search events">
+            </div>
+            <div class="control-item">
+                <label for="eventCategory">Category:</label>
+                <select id="eventCategory">
+                    <option value="all">All Categories</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Career">Career</option>
+                    <option value="Cultural">Cultural</option>
+                </select>
+            </div>
+            <div class="control-item">
+                <label for="eventSort">Sort By:</label>
+                <select id="eventSort">
+                    <option value="date-asc">Date: Earliest First</option>
+                    <option value="date-desc">Date: Latest First</option>
+                    <option value="title-asc">Name: A to Z</option>
+                    <option value="title-desc">Name: Z to A</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Events Container (populated dynamically via Fetch API from Practical 6/events.json) -->
         <div class="grid-container">
             <div class="events-divs">
                 <h4>AI Workshop</h4>
@@ -75,38 +103,13 @@
                 Creative poster design competition around Sustainability.</p>
                 <button type="button" onclick="openModal('Poster Making Competition', 'Express your creativity on the theme Environment & Tech Sustainability. Materials will be provided at the venue.')">View Details</button>
             </div>
-            <div class="events-divs">
-                <h4>Talent Show</h4>
-                <p class="p-button-push">Date: April 20th, 2026<br>
-                Time: 5:00 PM - 8:00 PM<br>
-                Venue: Auditorium, Main Building<br>
-                Showcase your singing, dancing, drama & music skills.</p>
-                <button type="button" onclick="openModal('Annual Student Talent Show', 'Auditions close April 10th. Open for individual and group performances. Winners earn trophies and certificates.')">View Details</button>
-            </div>
-            <div class="events-divs">
-                <h4>Coding Contest</h4>
-                <p class="p-button-push">Date: April 25th, 2026<br>
-                Time: 2:00 PM - 5:00 PM<br>
-                Venue: Computer Lab, Building D<br>
-                Speed algorithmic problem solving challenge.</p>
-                <button type="button" onclick="openModal('Speed Coding Contest', 'Solve 5 algorithmic challenges in C++, Java, or Python. Test cases evaluated automatically on competitive coding platform.')">View Details</button>
-            </div>
-            <div class="events-divs">
-                <h4>AI Summit</h4>
-                <p class="p-button-push">Date: May 10th, 2026<br>
-                Time: 9:00 AM - 5:00 PM<br>
-                Venue: Convention Center, Main Building<br>
-                Keynotes from leading researchers and tech leaders.</p>
-                <button type="button" onclick="openModal('National AI Summit', 'Full-day conference with keynote sessions, paper presentations, panel discussions on Generative AI and Ethics.')">View Details</button>
-            </div>
-            <div class="events-divs">
-                <h4>Startup Expo</h4>
-                <p class="p-button-push">Date: May 15th, 2026<br>
-                Time: 10:00 AM - 4:00 PM<br>
-                Venue: Exhibition Hall, Building E<br>
-                Student startup pitches and investor networking.</p>
-                <button type="button" onclick="openModal('Student Startup Expo', 'Pitch your startup ideas to angel investors and seed funds. Winner receives $2000 seed grant funding.')">View Details</button>
-            </div>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-container">
+            <button type="button" id="prevPageBtn" class="pagination-btn" disabled>&laquo; Previous</button>
+            <span id="pageInfo" class="pagination-info">Page 1 of 1</span>
+            <button type="button" id="nextPageBtn" class="pagination-btn">Next &raquo;</button>
         </div>
     </main>
 
@@ -140,6 +143,8 @@
 
     <!-- JavaScript for Dynamic Components -->
     <script src="../../Practical 4/dynamic-components.js"></script>
+    <!-- JavaScript for Fetch API, Search, Filter, Sort & Pagination -->
+    <script src="../../Practical 6/events-fetch.js"></script>
 </body>
 </html>
 

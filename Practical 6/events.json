@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "title": "AI Workshop",
+    "category": "Workshop",
+    "date": "2026-03-20",
+    "dateDisplay": "March 20th, 2026",
+    "time": "10:00 AM - 12:00 PM",
+    "venue": "Room 101, Main Building",
+    "description": "Learn fundamentals of Artificial Intelligence & Machine Learning.",
+    "details": "Join us for an interactive workshop covering neural networks, Python AI libraries, and practical machine learning applications. Date: March 20th, 2026 at Room 101."
+  },
+  {
+    "id": 2,
+    "title": "Hackathon 2026",
+    "category": "Technical",
+    "date": "2026-03-15",
+    "dateDisplay": "March 15th - 17th, 2026",
+    "time": "48 hours nonstop",
+    "venue": "Tech Lab, Building B",
+    "description": "48-hour coding marathon with prizes for top projects.",
+    "details": "Build innovative software/hardware solutions in teams of 2 to 4. Free meals, mentor assistance, and over $5000 in prizes! Date: March 15th - 17th, 2026."
+  },
+  {
+    "id": 3,
+    "title": "Placement Drive",
+    "category": "Career",
+    "date": "2026-04-05",
+    "dateDisplay": "April 5th, 2026",
+    "time": "9:00 AM - 3:00 PM",
+    "venue": "Auditorium, Main Building",
+    "description": "Annual recruitment drive for graduating batches.",
+    "details": "Meet recruiters from top MNCs and high-growth startups. Mandatory formal dress code and printed resumes required."
+  },
+  {
+    "id": 4,
+    "title": "Poster Making",
+    "category": "Cultural",
+    "date": "2026-04-12",
+    "dateDisplay": "April 12th, 2026",
+    "time": "11:00 AM - 1:00 PM",
+    "venue": "Art Room, Building C",
+    "description": "Creative poster design competition around Sustainability.",
+    "details": "Express your creativity on the theme Environment & Tech Sustainability. Materials will be provided at the venue."
+  },
+  {
+    "id": 5,
+    "title": "Talent Show",
+    "category": "Cultural",
+    "date": "2026-04-20",
+    "dateDisplay": "April 20th, 2026",
+    "time": "5:00 PM - 8:00 PM",
+    "venue": "Auditorium, Main Building",
+    "description": "Showcase your singing, dancing, drama & music skills.",
+    "details": "Auditions close April 10th. Open for individual and group performances. Winners earn trophies and certificates."
+  },
+  {
+    "id": 6,
+    "title": "Coding Contest",
+    "category": "Technical",
+    "date": "2026-04-25",
+    "dateDisplay": "April 25th, 2026",
+    "time": "2:00 PM - 5:00 PM",
+    "venue": "Computer Lab, Building D",
+    "description": "Speed algorithmic problem solving challenge.",
+    "details": "Solve 5 algorithmic challenges in C++, Java, or Python. Test cases evaluated automatically on competitive coding platform."
+  },
+  {
+    "id": 7,
+    "title": "AI Summit",
+    "category": "Workshop",
+    "date": "2026-05-10",
+    "dateDisplay": "May 10th, 2026",
+    "time": "9:00 AM - 5:00 PM",
+    "venue": "Convention Center, Main Building",
+    "description": "Keynotes from leading researchers and tech leaders.",
+    "details": "Full-day conference with keynote sessions, paper presentations, panel discussions on Generative AI and Ethics."
+  },
+  {
+    "id": 8,
+    "title": "Startup Expo",
+    "category": "Career",
+    "date": "2026-05-15",
+    "dateDisplay": "May 15th, 2026",
+    "time": "10:00 AM - 4:00 PM",
+    "venue": "Exhibition Hall, Building E",
+    "description": "Student startup pitches and investor networking.",
+    "details": "Pitch your startup ideas to angel investors and seed funds. Winner receives $2000 seed grant funding."
+  },
+  {
+    "id": 9,
+    "title": "Web Dev Bootcamp",
+    "category": "Workshop",
+    "date": "2026-05-22",
+    "dateDisplay": "May 22nd, 2026",
+    "time": "1:00 PM - 5:00 PM",
+    "venue": "Web Lab 2, Building A",
+    "description": "Hands-on session on modern JavaScript & RESTful APIs.",
+    "details": "Master asynchronous JavaScript, Fetch API, and component-based frontend web development from scratch."
+  },
+  {
+    "id": 10,
+    "title": "Robotics Challenge",
+    "category": "Technical",
+    "date": "2026-05-28",
+    "dateDisplay": "May 28th, 2026",
+    "time": "10:00 AM - 3:00 PM",
+    "venue": "Robotics Arena, Main Ground",
+    "description": "Obstacle course race and line-follower robot contest.",
+    "details": "Design autonomous or RF-controlled robots to tackle obstacles. Cash prizes for the fastest completion times."
+  },
+  {
+    "id": 11,
+    "title": "Photography Exhibition",
+    "category": "Cultural",
+    "date": "2026-06-02",
+    "dateDisplay": "June 2nd, 2026",
+    "time": "11:00 AM - 6:00 PM",
+    "venue": "Central Gallery, Library Block",
+    "description": "Annual student photo showcase and competition.",
+    "details": "Vote for the People's Choice Award across Portrait, Landscape, and Street Photography categories."
+  },
+  {
+    "id": 12,
+    "title": "Resume & Mock Interview Workshop",
+    "category": "Career",
+    "date": "2026-06-10",
+    "dateDisplay": "June 10th, 2026",
+    "time": "2:00 PM - 4:30 PM",
+    "venue": "Seminar Hall, Building B",
+    "description": "1-on-1 industry mentor feedback and HR practice sessions.",
+    "details": "Bring printed copies of your resume for live review by alumni recruiters and take part in technical mock interviews."
+  }
+]
