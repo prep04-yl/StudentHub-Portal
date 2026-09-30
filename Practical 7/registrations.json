@@ -1,0 +1,13 @@
+[
+    {
+        "id": "STU-3ACB82",
+        "full_name": "asdf",
+        "email": "sgg@gmail.com",
+        "mobile": "9087654321",
+        "course": "Computer Engineering",
+        "year": "2nd Year",
+        "gender": "Male",
+        "password_hash": "$2y$10$IiHs6i1Frs.ywD2DmiuF.OBbF48.HIo6OWA1yoLoS8XgCyeJ6pnO2",
+        "registered_at": "2026-09-30 06:54:59"
+    }
+]
