@@ -224,8 +224,31 @@ if (file_exists($jsonFile) && filesize($jsonFile) > 0) {
 $existingRecords[] = $record;
 @file_put_contents($jsonFile, json_encode($existingRecords, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
+// 7b. Practical 8 Sync: Insert into MySQL Database using PDO Prepared Statements if available
+$dbSynced = false;
+$p8Operations = dirname(__DIR__) . '/Practical 8/operations.php';
+if (file_exists($p8Operations)) {
+    try {
+        require_once $p8Operations;
+        if (isset($pdo) && $pdo instanceof PDO) {
+            registerStudent($pdo, [
+                'fullName' => $fullName,
+                'email'    => $email,
+                'mobile'   => $mobile,
+                'password' => $rawPassword,
+                'course'   => $course,
+                'year'     => $year,
+                'gender'   => $gender
+            ]);
+            $dbSynced = true;
+        }
+    } catch (\Throwable $t) {
+        // Silently ignore or log so file storage always succeeds even if MySQL isn't running
+    }
+}
+
 // 8. Output Success Response
-$successMessage = "Student registration completed successfully for {$fullName} ({$studentId}). Records stored in CSV & JSON.";
+$successMessage = "Student registration completed successfully for {$fullName} ({$studentId}). Records stored in CSV & JSON" . ($dbSynced ? " and synced with MySQL database." : ".");
 
 if ($isAjax) {
     header('Content-Type: application/json; charset=UTF-8');
