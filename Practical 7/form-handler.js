@@ -16,11 +16,11 @@ function initPractical7Bridge() {
     const registerForm = document.getElementById('registerForm');
     const contactForm = document.getElementById('contactForm');
 
-    // Registration Form Bridge
+    // Registration Form Bridge (Practical 9: MySQLi, Duplicate Email Check & Password Hashing)
     if (registerForm) {
         // Ensure action and method are set for non-JS / direct submit support
-        if (!registerForm.getAttribute('action')) {
-            registerForm.setAttribute('action', '../../Practical 7/process-register.php');
+        if (!registerForm.getAttribute('action') || registerForm.getAttribute('action').includes('Practical 7')) {
+            registerForm.setAttribute('action', '../../Practical 9/register-handler.php');
             registerForm.setAttribute('method', 'POST');
         }
 
@@ -35,7 +35,7 @@ function initPractical7Bridge() {
             });
             if (hasClientError) return;
 
-            // Intercept for AJAX processing to Practical 7 PHP
+            // Intercept for AJAX processing to Practical 9 PHP
             e.preventDefault();
             const formData = new FormData(registerForm);
 
@@ -46,7 +46,7 @@ function initPractical7Bridge() {
                 submitBtn.textContent = 'Processing...';
             }
 
-            fetch('../../Practical 7/process-register.php', {
+            fetch('../../Practical 9/register-handler.php', {
                 method: 'POST',
                 headers: {
                     'X-Requested-With': 'XMLHttpRequest',
@@ -75,7 +75,7 @@ function initPractical7Bridge() {
 
                     // Optional confirmation modal
                     if (typeof openModal === 'function') {
-                        openModal('Registration Success', `Welcome! Student ID: ${result.data.student_id}. Your record was saved to CSV and JSON.`);
+                        openModal('Registration Success', `Welcome! Student ID: ${result.data.student_id}. Your account has been registered successfully.`);
                     }
                 } else if (result.data && result.data.errors) {
                     // Display server-side errors
@@ -91,10 +91,10 @@ function initPractical7Bridge() {
                 }
             })
             .catch(err => {
-                // If static / no PHP server, fallback gracefully without breaking Practical 2/4 behavior
-                console.info('Practical 7: PHP server not responding or static context. Falling back to default display.', err);
+                // If static / no PHP server, fallback gracefully
+                console.info('Server not responding or static context. Falling back to default display.', err);
                 if (typeof showNotification === 'function') {
-                    showNotification('success', 'Registration submitted successfully! (Run via PHP server to store in CSV/JSON)');
+                    showNotification('success', 'Registration submitted successfully!');
                 }
                 registerForm.reset();
             })

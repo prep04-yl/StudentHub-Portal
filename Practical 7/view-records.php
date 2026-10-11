@@ -57,7 +57,7 @@ if (file_exists($contactsJsonFile)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practical 7 - Stored Records Viewer</title>
+    <title>StudentHub Portal - Stored Records Viewer</title>
     <link rel="stylesheet" href="../Practical 3/style.css">
     <style>
         .records-container {
@@ -301,7 +301,7 @@ if (file_exists($contactsJsonFile)) {
     </main>
 
     <footer>
-        <p>&copy; 2026 StudentHub Portal - Practical 7</p>
+        <p>&copy; 2026 StudentHub Portal</p>
     </footer>
 </body>
 </html>

@@ -1,100 +1,81 @@
 <?php
 /**
- * Practical 8: Student & Event Operations using PDO Prepared Statements
- * File: operations.php
- * Demonstrates secure CRUD operations protecting against SQL Injection.
+ * Practical 8: Basic Database Operations using PDO Prepared Statements
  */
+require_once "db.php";
 
-require_once __DIR__ . '/db.php';
-
-/**
- * Register a new student into the students table using prepared statements
- */
-function registerStudent(PDO $pdo, array $data): array {
-    $sql = "INSERT INTO `students` (`full_name`, `email`, `mobile`, `password_hash`, `course`, `academic_year`, `gender`)
-            VALUES (:full_name, :email, :mobile, :password_hash, :course, :academic_year, :gender)";
-
+// 1. Insert a student using PDO prepared statement
+function addStudent($pdo, $name, $email, $mobile, $password, $course, $year, $gender) {
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO students (full_name, email, mobile, password_hash, course, academic_year, gender) 
+            VALUES (:name, :email, :mobile, :password, :course, :year, :gender)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':full_name'     => trim($data['fullName'] ?? ''),
-        ':email'         => strtolower(trim($data['email'] ?? '')),
-        ':mobile'        => trim($data['mobile'] ?? ''),
-        ':password_hash' => password_hash($data['password'] ?? '', PASSWORD_DEFAULT),
-        ':course'        => trim($data['course'] ?? ''),
-        ':academic_year' => trim($data['year'] ?? ''),
-        ':gender'        => trim($data['gender'] ?? 'Other')
+        ':name'     => $name,
+        ':email'    => $email,
+        ':mobile'   => $mobile,
+        ':password' => $hashedPassword,
+        ':course'   => $course,
+        ':year'     => $year,
+        ':gender'   => $gender
     ]);
-
-    return [
-        'student_id' => (int) $pdo->lastInsertId(),
-        'message'    => 'Student registered successfully'
-    ];
+    return $pdo->lastInsertId();
 }
 
-/**
- * Fetch all available events
- */
-function getAllEvents(PDO $pdo): array {
-    $stmt = $pdo->query("SELECT `event_id`, `title`, `category`, `event_date`, `venue`, `max_seats` FROM `events` ORDER BY `event_date` ASC");
+// 2. Fetch all students
+function getStudents($pdo) {
+    $stmt = $pdo->query("SELECT student_id, full_name, email, course FROM students");
     return $stmt->fetchAll();
 }
 
-/**
- * Register a student for a specific event
- */
-function registerForEvent(PDO $pdo, int $studentId, int $eventId): array {
-    $sql = "INSERT INTO `registrations` (`student_id`, `event_id`, `status`)
-            VALUES (:student_id, :event_id, 'Confirmed')
-            ON DUPLICATE KEY UPDATE `status` = 'Confirmed'";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        ':student_id' => $studentId,
-        ':event_id'   => $eventId
-    ]);
-
-    return [
-        'registration_id' => (int) $pdo->lastInsertId(),
-        'message'         => 'Event registered successfully'
-    ];
-}
-
-/**
- * Get all registrations with joined student and event details
- */
-function getEventRegistrations(PDO $pdo): array {
-    $sql = "SELECT 
-                r.registration_id,
-                r.registered_at,
-                r.status,
-                s.student_id,
-                s.full_name AS student_name,
-                s.email AS student_email,
-                s.course,
-                e.event_id,
-                e.title AS event_title,
-                e.category AS event_category,
-                e.event_date,
-                e.venue
-            FROM `registrations` r
-            INNER JOIN `students` s ON r.student_id = s.student_id
-            INNER JOIN `events` e   ON r.event_id = e.event_id
-            ORDER BY r.registered_at DESC";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+// 3. Fetch all events
+function getEvents($pdo) {
+    $stmt = $pdo->query("SELECT event_id, title, event_date, venue FROM events");
     return $stmt->fetchAll();
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StudentHub Portal - Directory &amp; Events</title>
+    <link rel="stylesheet" href="../Practical 3/style.css">
+    <style>
+        .p8-container { max-width: 800px; margin: 30px auto; padding: 20px; background: #fff; border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <div class="p8-container">
+        <h2>Student Directory &amp; Campus Events</h2>
+        
+        <h3>Students List</h3>
+        <table>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Course</th></tr>
+            <?php foreach (getStudents($pdo) as $s): ?>
+                <tr>
+                    <td><?= htmlspecialchars($s['student_id']) ?></td>
+                    <td><?= htmlspecialchars($s['full_name']) ?></td>
+                    <td><?= htmlspecialchars($s['email']) ?></td>
+                    <td><?= htmlspecialchars($s['course']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
 
-/**
- * Check if script is run directly to display data as JSON/test
- */
-if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'] ?? '')) {
-    header('Content-Type: application/json; charset=UTF-8');
-    echo json_encode([
-        'status'  => 'success',
-        'events'  => getAllEvents($pdo),
-        'records' => getEventRegistrations($pdo)
-    ], JSON_PRETTY_PRINT);
-    exit;
-}
+        <h3 style="margin-top: 30px;">Events List</h3>
+        <table>
+            <tr><th>ID</th><th>Title</th><th>Date</th><th>Venue</th></tr>
+            <?php foreach (getEvents($pdo) as $e): ?>
+                <tr>
+                    <td><?= htmlspecialchars($e['event_id']) ?></td>
+                    <td><?= htmlspecialchars($e['title']) ?></td>
+                    <td><?= htmlspecialchars($e['event_date']) ?></td>
+                    <td><?= htmlspecialchars($e['venue']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+</body>
+</html>

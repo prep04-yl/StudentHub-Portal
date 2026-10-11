@@ -2107,3 +2107,8 @@ body.dark-theme {
 .dark-theme .pagination-info {
     color: #ddd;
 }
+
+/* About Page Headings */
+.about-headings {
+    text-align: center;
+}
