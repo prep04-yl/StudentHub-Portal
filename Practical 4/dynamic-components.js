@@ -17,9 +17,9 @@ function initializeNotification() {
 
 /* Form Submit Handlers for Dynamic Notifications */
 function initializeFormListeners() {
-    // Login Form
+    // Login Form (only active if form-handler.js is not loaded)
     const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
+    if (loginForm && !document.querySelector('script[src*="form-handler.js"]')) {
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             showNotification('success', 'Login successful! Redirecting to dashboard...');

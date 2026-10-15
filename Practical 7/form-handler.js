@@ -175,4 +175,73 @@ function initPractical7Bridge() {
             });
         }, true);
     }
+
+    // Login Form Bridge (Secure Login, Session Initiation & Role Redirection)
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        if (!loginForm.getAttribute('action')) {
+            loginForm.setAttribute('action', '../../Practical 10/login-handler.php');
+            loginForm.setAttribute('method', 'POST');
+        }
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = loginForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'Login';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Authenticating...';
+            }
+
+            const formData = new FormData(loginForm);
+
+            fetch('../../Practical 10/login-handler.php', {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(async response => {
+                const contentType = response.headers.get('content-type') || '';
+                if (!contentType.includes('application/json')) {
+                    throw new Error('Static environment: PHP backend not active');
+                }
+                const data = await response.json();
+                return { ok: response.ok, status: response.status, data };
+            })
+            .then(result => {
+                if (result.ok && result.data.status === 'success') {
+                    if (typeof showNotification === 'function') {
+                        showNotification('success', result.data.message || 'Login successful!');
+                    }
+                    setTimeout(() => {
+                        window.location.href = '../../Practical 10/' + result.data.redirect_url;
+                    }, 1000);
+                } else {
+                    const msg = (result.data && result.data.message) ? result.data.message : 'Invalid credentials.';
+                    if (typeof showNotification === 'function') {
+                        showNotification('error', msg);
+                    } else {
+                        alert(msg);
+                    }
+                }
+            })
+            .catch(err => {
+                console.error('Login error:', err);
+                if (typeof showNotification === 'function') {
+                    showNotification('error', 'Server error or invalid credentials. Please check your details.');
+                } else {
+                    alert('Server error or invalid credentials.');
+                }
+            })
+            .finally(() => {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            });
+        }, true);
+    }
 }
